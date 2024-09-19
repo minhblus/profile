@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Văn Minh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Poppins';
+            font-weight: 300;
+            background-color: #dac5d2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 400px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #000000;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+        }
+        #avtfake {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid black;
+        }
+        .social-links a {
+            margin: 0 10px;
+
+            text-decoration: none;
+            color: #000000;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        #snowfall {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+        #profile {
+            justify-content: center; /* Căn giữa các item theo chiều ngang */
+            align-items: center; /* (Tùy chọn) Căn giữa theo chiều dọc */
+            flex-wrap: wrap;
+            display: flex;
+        }
+        #profile2 {
+            justify-content: center; /* Căn giữa các item theo chiều ngang */
+            align-items: center; /* (Tùy chọn) Căn giữa theo chiều dọc */
+            flex-wrap: wrap;
+            display: flex;
+            margin-right: 10px;
+        }
+        #profile div {
+            margin: 10px;
+            align-items: center;
+        }
+        #profile div p {
+            text-align: center;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            opacity: 0.9;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="avtfake"></div>
+        <h1>Văn Minh</h1>
+        <div id="profile">
+            <div>
+                <p>Birthday</p>
+                <p>14 Jun, 2009</p>
+            </div>
+            <div>
+                <p>Location</p>
+                <p>Ha Noi, Vietnam</p>
+            </div>
+        </div>
+
+        <!-- <div id="profile2">
+            <p class="fa-solid fa-code">:</p>
+            <i class="fa-brands fa-python"></i>
+            <i class="fa-brands fa-js"></i>
+        </div> -->
+        <h3>Connect me</h3>
+        <div class="social-links">
+            <a class="fa-brands fa-facebook" href="https://www.facebook.com/minhblus1" target="_blank"></a>
+            <a class="fa-brands fa-github" href="https://github.com/minhblus" target="_blank"></a>
+
+        </div>
+    </div>
+    <div id="snowfall"></div>
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            
+            // Kích thước ngẫu nhiên của bông tuyết
+            const size = Math.random() * 5 + 5 + 'px';
+            snowflake.style.zIndex=-1
+            snowflake.style.width = size;
+            snowflake.style.height = size;
+            
+            // Vị trí bông tuyết bắt đầu
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            
+            // Thời gian rơi và trôi ngẫu nhiên
+            const duration = Math.random() * 3 + 2 + 's';
+            snowflake.style.animationDuration = duration;
+
+            // Thêm vào DOM
+            document.getElementById('snowfall').appendChild(snowflake);
+            
+            // Xóa bông tuyết sau khi rơi
+            setTimeout(() => {
+                snowflake.remove();
+            }, parseInt(duration) * 1000);
+        }
+
+        // Tạo nhiều bông tuyết
+        setInterval(createSnowflake, 100);
+
+    </script>
+</body>
+</html>
